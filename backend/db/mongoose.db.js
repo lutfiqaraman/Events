@@ -3,7 +3,7 @@ require('dotenv').config({ path: "../.env" });
 
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
-const database   = process.env.DB_NAME;
+const database = process.env.DB_NAME;
 
 const url = `mongodb+srv://${username}:${password}@cluster0-eqore.mongodb.net/`
 
