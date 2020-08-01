@@ -13,7 +13,8 @@ const options = {
   useUnifiedTopology: true
 };
 
-mongoose
+exports.connection = () => {
+  mongoose
   .connect(url, options)
   .then(() => {
     console.log('connect to mongo cloud');
@@ -21,3 +22,4 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+}
