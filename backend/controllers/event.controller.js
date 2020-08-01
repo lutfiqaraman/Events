@@ -1,6 +1,6 @@
 const Event = require('../models/event.model');
 
-exports.getEvent = (req, res) => {
+exports.getEventById = (req, res) => {
 
 };
 
