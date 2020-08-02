@@ -5,7 +5,9 @@ exports.getEventById = (req, res) => {
 };
 
 exports.getAllEvents = (req, res) => {
-
+  Event.find().then((data) => {
+    res.status(200).json(data);
+  });
 };
 
 exports.createEvent = async (req, res) => {
@@ -40,5 +42,5 @@ exports.deleteEvent = (req, res) => {
   }).catch((err) => {
     res.json(err);
   });
-  
+
 };
