@@ -1,5 +1,6 @@
 const Event = require('../models/event.model');
 
+// Get an event by Id
 exports.getEventById = async (req, res) => {
   const eventID = req.params.id;
 
@@ -17,12 +18,14 @@ exports.getEventById = async (req, res) => {
           });
 };
 
+// Get all events
 exports.getAllEvents = async (req, res) => {
   await Event.find().then((data) => {
     res.status(200).json(data);
   });
 };
 
+// Create an Event
 exports.createEvent = async (req, res) => {
   const event = new Event({
     title: req.body.title,
@@ -42,10 +45,12 @@ exports.createEvent = async (req, res) => {
           });
 };
 
+// Update an Event
 exports.updateEvent = (req, res) => {
 
 };
 
+// Delete an Event
 exports.deleteEvent = (req, res) => {
 
   const eventID = req.params.id;
