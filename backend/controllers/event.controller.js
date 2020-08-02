@@ -1,11 +1,24 @@
 const Event = require('../models/event.model');
 
-exports.getEventById = (req, res) => {
+exports.getEventById = async (req, res) => {
+  const eventID = req.params.id;
 
+  await Event
+          .findById(eventID)
+          .then((event) => {
+            if (event) {
+              res.status(200).json(event);
+            } else {
+              res.status(400).json('event cannot be found');
+            }
+          })
+          .catch((err) => {
+            res.json(err);
+          });
 };
 
-exports.getAllEvents = (req, res) => {
-  Event.find().then((data) => {
+exports.getAllEvents = async (req, res) => {
+  await Event.find().then((data) => {
     res.status(200).json(data);
   });
 };
