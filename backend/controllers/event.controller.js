@@ -33,4 +33,12 @@ exports.updateEvent = (req, res) => {
 
 exports.deleteEvent = (req, res) => {
 
+  const eventID = req.params.id;
+  
+  Event.deleteOne({ _id: eventID  }).then(() => {
+    res.status(201).json('Event has been deleted');
+  }).catch((err) => {
+    res.json(err);
+  });
+  
 };
