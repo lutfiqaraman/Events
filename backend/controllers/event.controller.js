@@ -47,7 +47,20 @@ exports.createEvent = async (req, res) => {
 
 // Update an Event
 exports.updateEvent = (req, res) => {
+  const eventID = req.params.id;
 
+  const event = {
+    _id: eventID,
+    title: req.body.title,
+    description: req.body.description,
+    className: req.body.className,
+    start: req.body.start,
+    end: req.body.end
+  };
+
+  Event.updateOne({ _id: eventID }, event).then((data) => {
+    res.status(200).json(data);
+  });
 };
 
 // Delete an Event
