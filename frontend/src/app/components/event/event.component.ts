@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
   selector: 'app-event',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
+  calendarOptions: CalendarOptions;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.showCalendar();
+  }
+
+  showCalendar(): void {
+    this.calendarOptions = {
+      initialView: 'dayGridMonth'
+    };
   }
 
 }
