@@ -8,6 +8,7 @@ import { EventComponent } from './components/event/event.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -17,7 +18,8 @@ FullCalendarModule.registerPlugins([
 @NgModule({
   declarations: [
     AppComponent,
-    EventComponent
+    EventComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
