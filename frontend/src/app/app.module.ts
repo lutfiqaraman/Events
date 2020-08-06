@@ -9,6 +9,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -19,7 +20,8 @@ FullCalendarModule.registerPlugins([
   declarations: [
     AppComponent,
     EventComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
