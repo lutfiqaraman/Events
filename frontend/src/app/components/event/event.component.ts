@@ -16,15 +16,15 @@ export class EventComponent implements OnInit {
   constructor(public eventsrv: EventService) { }
 
   ngOnInit(): void {
+
     this.eventsrv.getEvents().subscribe((data) => {
       this.events = data;
-      console.log(this.events);
     });
 
     this.showCalendar();
   }
 
-  showCalendar(): void {
+  showCalendar() {
     this.calendarOptions = {
       initialView: 'dayGridMonth'
     };
