@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { EventService } from 'src/app/services/event.service';
 import { IEvent } from 'src/app/models/event.model';
-import { ThrowStmt } from '@angular/compiler';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -27,12 +26,15 @@ export class EventComponent implements OnInit {
   }
 
   showCalendar(eventsList: any) {
-
     this.calendarOptions = {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      },
       initialView: 'dayGridMonth',
       events: eventsList
     };
-
   }
 
 }

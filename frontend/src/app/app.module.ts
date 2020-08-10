@@ -7,11 +7,16 @@ import { AppComponent } from './app.component';
 
 // FullCalendaer js Component - Start
 import { FullCalendarModule } from '@fullcalendar/angular';
+
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
   interactionPlugin
 ]);
 // FullCalendaer js Component - end
