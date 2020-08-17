@@ -33,8 +33,14 @@ export class EventComponent implements OnInit {
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
-      events: eventsList
+      events: eventsList,
+      selectable: true,
+      select: this.showAlert
     };
+  }
+
+  showAlert() {
+    console.log('you click me ...');
   }
 
 }
