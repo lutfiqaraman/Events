@@ -35,12 +35,11 @@ export class EventComponent implements OnInit {
       initialView: 'dayGridMonth',
       events: eventsList,
       selectable: true,
-      select: this.showModalBox
+      select: this.showModel.bind(this),
     };
   }
 
-  showModalBox() {
+  showModel() {
     console.log('click');
   }
-
 }
