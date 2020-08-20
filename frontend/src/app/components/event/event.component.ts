@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgModuleRef } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { EventService } from 'src/app/services/event.service';
 import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
@@ -11,6 +12,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EventComponent implements OnInit {
   closeResult = '';
+  eventModalBox: NgbModalRef;
   @ViewChild('content') content: any;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
@@ -42,7 +44,8 @@ export class EventComponent implements OnInit {
   }
 
   showModel(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.eventModalBox = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.eventModalBox.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -59,5 +62,9 @@ export class EventComponent implements OnInit {
     }
 
     return `with: ${reason}`;
+  }
+
+  saveEvent() {
+    this.eventModalBox.close();
   }
 }
