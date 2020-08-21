@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DatePipe } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 // FullCalendaer js Component - Start
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -15,7 +16,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
-import { NgbModule, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -39,10 +40,12 @@ FullCalendarModule.registerPlugins([
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [{
-    provide: NgbDateAdapter,
-    useClass: NgbDateNativeAdapter
-  }, DatePipe],
+  providers: [
+    {
+      provide: NgbDateAdapter,
+      useClass: NgbDateNativeAdapter
+    },
+    DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

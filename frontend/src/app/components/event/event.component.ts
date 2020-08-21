@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, NgModuleRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { EventService } from 'src/app/services/event.service';
 import { IEvent } from 'src/app/models/event.model';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-modal',
@@ -13,9 +13,9 @@ export class EventModalComponent implements OnInit {
   eventForm: FormGroup;
 
   constructor(
+    public eventsrv: EventService,
     public activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder,
-    private datePipe: DatePipe) { }
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.createAddEventForm();
@@ -32,20 +32,19 @@ export class EventModalComponent implements OnInit {
   submitEvent() {
 
     const sDate = this.eventForm.get('eventstart').value;
-    const eventStartDate = this.datePipe.transform(sDate, 'yyyy-MM-dd');
-
     const eDate = this.eventForm.get('eventend').value;
-    const eventEndDate = this.datePipe.transform(eDate, 'yyyy-MM-dd');
-
     const eventTitle = this.eventForm.get('eventtitle').value;
 
     const eventObj = {
       title: eventTitle,
-      start: eventStartDate,
-      end: eventEndDate
+      start: sDate,
+      end: eDate
     };
 
+    this.eventsrv.addEvent(eventObj);
     this.activeModal.close();
+
+    window.location.reload();
   }
 
 }
