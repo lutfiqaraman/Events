@@ -3,7 +3,8 @@ import { CalendarOptions } from '@fullcalendar/angular';
 import { EventService } from 'src/app/services/event.service';
 import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormModalComponent } from '../form-modal/form-modal.component';
 
 @Component({
   selector: 'app-event',
@@ -11,9 +12,6 @@ import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-boo
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  closeResult = '';
-  eventModalBox: NgbModalRef;
-  @ViewChild('content') content: any;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
 
@@ -43,28 +41,14 @@ export class EventComponent implements OnInit {
     };
   }
 
-  showModel(content: any) {
-    this.eventModalBox = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-    this.eventModalBox.result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  openEventModal() {
+    const modalRef = this.modalService.open(FormModalComponent);
+
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    }
-
-    if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    }
-
-    return `with: ${reason}`;
-  }
-
-  saveEvent() {
-    this.eventModalBox.close();
-  }
 }
