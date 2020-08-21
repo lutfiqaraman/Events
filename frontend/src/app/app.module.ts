@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 // FullCalendaer js Component - Start
 import { FullCalendarModule } from '@fullcalendar/angular';
 
@@ -13,7 +15,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -33,7 +34,9 @@ FullCalendarModule.registerPlugins([
     AppRoutingModule,
     FullCalendarModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

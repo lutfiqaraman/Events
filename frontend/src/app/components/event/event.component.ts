@@ -4,7 +4,7 @@ import { EventService } from 'src/app/services/event.service';
 import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormModalComponent } from '../form-modal/form-modal.component';
+import { EventModalComponent } from '../event-modal/event-modal.component';
 
 @Component({
   selector: 'app-event',
@@ -42,7 +42,7 @@ export class EventComponent implements OnInit {
   }
 
   openEventModal() {
-    const modalRef = this.modalService.open(FormModalComponent);
+    const modalRef = this.modalService.open(EventModalComponent);
 
     modalRef.result.then((result) => {
       console.log(result);

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { EventComponent } from './components/event/event.component';
-import { FormModalComponent } from './components/form-modal/form-modal.component';
+import { EventModalComponent } from './components/event-modal/event-modal.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,5 +21,5 @@ export const routingComponents = [
   NavbarComponent,
   HomeComponent,
   EventComponent,
-  FormModalComponent
+  EventModalComponent
 ];
