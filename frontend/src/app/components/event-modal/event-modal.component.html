@@ -8,6 +8,16 @@
 <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
   <div class="modal-body">
     <div class="container">
+
+      <!-- Event Title -->
+      <div class="form-group">
+        <label for="dateOfBirth">Title</label>
+        <div class="input-group">
+          <input id="eventtitle" class="form-control" placeholder="type your title" name="eventtitle" formControlName="eventtitle">
+        </div>
+      </div>
+
+      <!-- Event Start Date -->
       <div class="form-group">
         <label for="eventstartdate">Start Date</label>
         <div class="input-group">
@@ -18,6 +28,7 @@
         </div>
       </div>
 
+      <!-- Event End Date -->
       <div class="form-group">
         <label for="eventenddate">End Date</label>
         <div class="input-group">
@@ -28,12 +39,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="dateOfBirth">Title</label>
-        <div class="input-group">
-          <input id="eventtitle" class="form-control" placeholder="type your title" name="eventtitle" formControlName="eventtitle">
-        </div>
-      </div>
     </div>
   </div>
   <div class="modal-footer">

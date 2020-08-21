@@ -37,7 +37,13 @@ export class EventModalComponent implements OnInit {
     const eDate = this.eventForm.get('eventend').value;
     const eventEndDate = this.datePipe.transform(eDate, 'yyyy-MM-dd');
 
-    const title = this.eventForm.get('eventtitle').value;
+    const eventTitle = this.eventForm.get('eventtitle').value;
+
+    const eventObj = {
+      title: eventTitle,
+      start: eventStartDate,
+      end: eventEndDate
+    };
 
     this.activeModal.close();
   }
