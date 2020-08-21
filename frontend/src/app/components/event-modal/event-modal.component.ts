@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-event-modal',
@@ -25,6 +25,10 @@ export class EventModalComponent implements OnInit {
   }
 
   submitEvent() {
+    const sDate = this.eventForm.get('eventstart').value;
+    const eDate = this.eventForm.get('eventend').value;
+    const title = this.eventForm.get('eventtitle').value;
+
     this.activeModal.close();
   }
 
