@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { EventService } from 'src/app/services/event.service';
 import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-event',
@@ -12,6 +13,7 @@ import { EventModalComponent } from '../event-modal/event-modal.component';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
+  @ViewChild('calendar') calendar: FullCalendarComponent;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
 
@@ -37,18 +39,22 @@ export class EventComponent implements OnInit {
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
-      events: eventsList
+      events: this.fetchEvents.bind(this)
     };
   }
 
-  openEventModal() {
+  openEventModal(): void {
     const modalRef = this.modalService.open(EventModalComponent);
+    modalRef.result
+    .then(() => {
+      const cal = this.calendar.getApi();
+      cal.refetchEvents();
+    })
+    .catch((error) => { console.log(error); });
+  }
 
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
+  fetchEvents(fetchInfo: any, successCallback, failureCallback) {
+    successCallback(this.events);
   }
 
 }

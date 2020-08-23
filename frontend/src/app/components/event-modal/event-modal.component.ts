@@ -43,8 +43,6 @@ export class EventModalComponent implements OnInit {
 
     this.eventsrv.addEvent(eventObj);
     this.activeModal.close();
-
-    window.location.reload();
   }
 
 }
