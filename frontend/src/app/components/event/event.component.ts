@@ -19,18 +19,14 @@ export class EventComponent implements OnInit {
 
   constructor(
     public eventsrv: EventService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
-    this.eventsrv.getEvents().subscribe((data) => {
-      this.events = data;
-      this.showCalendar(this.events);
-    }, (err: HttpErrorResponse) => {
-      alert(`Cannot get events. Got ${err.message}`);
-    });
+    this.fetchEvents();
   }
 
-  showCalendar(eventsList: any) {
+  showCalendar() {
     this.calendarOptions = {
       headerToolbar: {
         left: 'prev,next today',
@@ -38,7 +34,7 @@ export class EventComponent implements OnInit {
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
-      events: this.fetchEvents.bind(this)
+      events: this.eventsContent.bind(this)
     };
   }
 
@@ -46,16 +42,31 @@ export class EventComponent implements OnInit {
     const modalRef = this.modalService.open(EventModalComponent);
     modalRef.result
     .then(() => {
-      const cal = this.calendar.getApi();
-      cal.refetchEvents();
+      const calendarAPI = this.calendar.getApi();
+      calendarAPI.refetchEvents();
     })
     .catch(() => {
       console.log('Error: add event form');
     });
   }
 
-  fetchEvents(fetchInfo: any, successCallback, failureCallback) {
+  eventsContent(fetchInfo: any, successCallback: any, failureCallback: any) {
     successCallback(this.events);
+
+    failureCallback(() => {
+      alert('Fail to show events content');
+    });
+
+    this.fetchEvents();
+  }
+
+  fetchEvents() {
+    this.eventsrv.getEvents().subscribe((data) => {
+      this.events = data;
+      this.showCalendar();
+    }, (err: HttpErrorResponse) => {
+      alert(`Cannot get events. Got ${err.message}`);
+    });
   }
 
 }
