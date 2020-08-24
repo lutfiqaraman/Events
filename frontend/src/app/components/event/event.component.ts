@@ -49,7 +49,9 @@ export class EventComponent implements OnInit {
       const cal = this.calendar.getApi();
       cal.refetchEvents();
     })
-    .catch((error) => { console.log(error); });
+    .catch(() => {
+      console.log('Error: add event form');
+    });
   }
 
   fetchEvents(fetchInfo: any, successCallback, failureCallback) {
