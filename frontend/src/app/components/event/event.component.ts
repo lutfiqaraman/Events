@@ -26,8 +26,7 @@ export class EventComponent implements OnInit {
       this.events = data;
       this.showCalendar(this.events);
     }, (err: HttpErrorResponse) => {
-      const error = `Cannot get events. Got ${err.message}`;
-      alert(error);
+      alert(`Cannot get events. Got ${err.message}`);
     });
   }
 
