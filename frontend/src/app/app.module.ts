@@ -29,7 +29,6 @@ FullCalendarModule.registerPlugins([
 @NgModule({
   declarations: [
     AppComponent,
-    FontAwesomeModule,
     routingComponents
   ],
   imports: [
@@ -39,7 +38,8 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     {
