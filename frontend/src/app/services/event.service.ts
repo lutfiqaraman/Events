@@ -23,4 +23,9 @@ export class EventService {
     this.url = 'http://localhost:3000/events';
     this.http.post(this.url, event).subscribe();
   }
+
+  editEvent(): void
+  {
+    // edit event code goes here ...
+  }
 }
