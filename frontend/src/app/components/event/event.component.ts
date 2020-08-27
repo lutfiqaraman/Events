@@ -34,7 +34,8 @@ export class EventComponent implements OnInit {
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
       initialView: 'dayGridMonth',
-      events: this.eventsContent.bind(this)
+      events: this.eventsContent.bind(this),
+      eventClick: this.onClickEvent.bind(this)
     };
   }
 
@@ -67,6 +68,11 @@ export class EventComponent implements OnInit {
     }, (err: HttpErrorResponse) => {
       alert(`Cannot get events. Got ${err.message}`);
     });
+  }
+
+  // Event - Double click
+  onClickEvent() {
+    alert('YOU CLICK ME');
   }
 
 }
