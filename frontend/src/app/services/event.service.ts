@@ -28,4 +28,9 @@ export class EventService {
   {
     // edit event code goes here ...
   }
+
+  deleteEvent(): void
+  {
+    // delete event code goes here ...
+  }
 }
