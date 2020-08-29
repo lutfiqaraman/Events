@@ -26,11 +26,13 @@ export class EventService {
 
   editEvent(): void
   {
-    // edit event code goes here ...
+    // edit event code goes here ...\
+    this.url = 'http://localhost:3000/events';
   }
 
   deleteEvent(): void
   {
     // delete event code goes here ...
+    this.url = 'http://localhost:3000/events';
   }
 }
