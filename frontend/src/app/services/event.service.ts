@@ -24,13 +24,13 @@ export class EventService {
     this.http.post(this.url, event).subscribe();
   }
 
-  editEvent(): void
+  editEvent(eventID: any): void
   {
     // edit event code goes here ...\
     this.url = 'http://localhost:3000/events';
   }
 
-  deleteEvent(): void
+  deleteEvent(eventID: any): void
   {
     // delete event code goes here ...
     this.url = 'http://localhost:3000/events';
