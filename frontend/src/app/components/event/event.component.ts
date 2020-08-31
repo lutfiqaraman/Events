@@ -72,7 +72,7 @@ export class EventComponent implements OnInit {
 
   // Event - Double click
   onClickEvent() {
-    alert('YOU CLICK ME');
+    console.log('you the id !');
   }
 
 }
