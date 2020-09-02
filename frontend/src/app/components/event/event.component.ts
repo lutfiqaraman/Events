@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
 import { error } from 'protractor';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-event',
@@ -35,7 +36,9 @@ export class EventComponent implements OnInit {
       },
       initialView: 'dayGridMonth',
       events: this.eventsContent.bind(this),
-      eventClick: this.onClickEvent.bind(this)
+      eventClick: () => {
+        alert(this);
+      }
     };
   }
 
@@ -68,11 +71,6 @@ export class EventComponent implements OnInit {
     }, (err: HttpErrorResponse) => {
       alert(`Cannot get events. Got ${err.message}`);
     });
-  }
-
-  // Event - Double click
-  onClickEvent() {
-    console.log('you the id !');
   }
 
 }
