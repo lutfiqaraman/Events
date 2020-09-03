@@ -36,9 +36,7 @@ export class EventComponent implements OnInit {
       },
       initialView: 'dayGridMonth',
       events: this.eventsContent.bind(this),
-      eventClick: () => {
-        alert(this);
-      }
+      eventClick: this.displayEvent.bind(this)
     };
   }
 
@@ -71,6 +69,10 @@ export class EventComponent implements OnInit {
     }, (err: HttpErrorResponse) => {
       alert(`Cannot get events. Got ${err.message}`);
     });
+  }
+
+  displayEvent(info: any) {
+    alert(info.event._id);
   }
 
 }
