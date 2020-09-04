@@ -17,6 +17,7 @@ export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
+  event: IEvent;
 
   constructor(
     public eventsrv: EventService,
@@ -72,7 +73,7 @@ export class EventComponent implements OnInit {
   }
 
   displayEvent(info: any) {
-    alert(info.event._id);
+    alert(info.event.extendedProps._id);
   }
 
 }
