@@ -73,7 +73,9 @@ export class EventComponent implements OnInit {
   }
 
   displayEvent(info: any) {
-    alert(info.event.extendedProps._id);
+    const eventId = info.event.extendedProps._id;
+    this.openEventModal();
+    console.log(eventId);
   }
 
 }
