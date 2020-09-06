@@ -27,7 +27,7 @@ export class EventService {
   editEvent(eventID: any): void
   {
     // edit event code goes here ...\
-    this.url = 'http://localhost:3000/events';
+    this.url = 'http://localhost:3000/events/' + eventID;
   }
 
   deleteEvent(eventID: any): void
