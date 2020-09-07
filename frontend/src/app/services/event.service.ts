@@ -33,6 +33,6 @@ export class EventService {
   deleteEvent(eventID: any): void
   {
     // delete event code goes here ...
-    this.url = 'http://localhost:3000/events';
+    this.url = 'http://localhost:3000/events' + eventID;
   }
 }
