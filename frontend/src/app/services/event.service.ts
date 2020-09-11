@@ -26,15 +26,12 @@ export class EventService {
 
   editEvent(eventID: any): Observable<IEvent[]>
   {
-    // edit event code goes here ...\
     this.url = 'http://localhost:3000/events/' + eventID;
     return this.http.get<IEvent[]>(this.url);
-
   }
 
   deleteEvent(eventID: any): void
   {
-    // delete event code goes here ...
     this.url = 'http://localhost:3000/events' + eventID;
   }
 }
