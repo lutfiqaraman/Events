@@ -24,10 +24,12 @@ export class EventService {
     this.http.post(this.url, event).subscribe();
   }
 
-  editEvent(eventID: any): void
+  editEvent(eventID: any): Observable<IEvent[]>
   {
     // edit event code goes here ...\
     this.url = 'http://localhost:3000/events/' + eventID;
+    return this.http.get<IEvent[]>(this.url);
+
   }
 
   deleteEvent(eventID: any): void
