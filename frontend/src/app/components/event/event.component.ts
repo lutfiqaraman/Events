@@ -5,8 +5,7 @@ import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
-import { error } from 'protractor';
-import { threadId } from 'worker_threads';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -17,6 +16,7 @@ export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
+  eventForm: FormGroup;
 
   constructor(
     public eventsrv: EventService,
@@ -74,6 +74,11 @@ export class EventComponent implements OnInit {
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
     this.eventsrv.editEvent(eventId);
+
+    this.eventsrv.editEvent(eventId).subscribe((result) => {
+      console.log(result);
+    });
+
     this.openEventModal();
   }
 
