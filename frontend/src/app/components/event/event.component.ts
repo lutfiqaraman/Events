@@ -5,7 +5,6 @@ import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
