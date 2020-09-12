@@ -16,7 +16,6 @@ export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
-  eventForm: FormGroup;
 
   constructor(
     public eventsrv: EventService,
