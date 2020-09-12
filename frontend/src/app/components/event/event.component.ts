@@ -77,9 +77,8 @@ export class EventComponent implements OnInit {
 
     this.eventsrv.editEvent(eventId).subscribe((result) => {
       console.log(result);
+      this.openEventModal();
     });
-
-    this.openEventModal();
   }
 
 }
