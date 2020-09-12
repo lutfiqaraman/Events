@@ -52,6 +52,10 @@ export class EventComponent implements OnInit {
     });
   }
 
+  editEventModal(): void {
+    const modalRef = this.modalService.open(EventModalComponent);
+  }
+
   eventsContent(fetchInfo: any, successCallback: any, failureCallback: any) {
     successCallback(this.events);
 
@@ -76,8 +80,7 @@ export class EventComponent implements OnInit {
     this.eventsrv.editEvent(eventId);
 
     this.eventsrv.editEvent(eventId).subscribe((result) => {
-      console.log(result);
-      this.openEventModal();
+      this.editEventModal();
     });
   }
 
