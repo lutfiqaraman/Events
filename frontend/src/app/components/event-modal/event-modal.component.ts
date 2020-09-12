@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { NgbActiveModal, NgbTimeStruct, NgbTimepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -15,11 +15,9 @@ export class EventModalComponent implements OnInit {
   constructor(
     public eventsrv: EventService,
     public activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder,
-    config: NgbTimepickerConfig)
+    private formBuilder: FormBuilder)
     {
-      config.seconds = true;
-      config.spinners = false;
+
     }
 
   ngOnInit(): void {
