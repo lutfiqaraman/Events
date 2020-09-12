@@ -28,22 +28,22 @@ export class EventModalComponent implements OnInit {
 
   private createAddEventForm() {
     this.eventForm = this.formBuilder.group({
+      eventtitle: '',
       eventstart: '',
-      eventend: '',
-      eventtitle: ''
+      eventend: ''
     });
   }
 
   submitEvent() {
 
-    const sDate = this.eventForm.get('eventstart').value;
-    const eDate = this.eventForm.get('eventend').value;
     const eventTitle = this.eventForm.get('eventtitle').value;
+    const eventStartDate = this.eventForm.get('eventstart').value;
+    const eventEndDate = this.eventForm.get('eventend').value;
 
     const eventObj = {
       title: eventTitle,
-      start: sDate,
-      end: eDate
+      start: eventStartDate,
+      end: eventEndDate
     };
 
     this.eventsrv.addEvent(eventObj);
