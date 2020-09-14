@@ -25,6 +25,10 @@ export class EventService {
     this.http.post(this.url, event).subscribe();
   }
 
+  getEventEditListener() {
+    return this.eventUpdate.asObservable();
+  }
+
   editEvent(eventID: any): Observable<IEvent[]>
   {
     this.url = 'http://localhost:3000/events/' + eventID;
@@ -36,7 +40,4 @@ export class EventService {
     this.url = 'http://localhost:3000/events' + eventID;
   }
 
-  getEventUpdateListener() {
-    return this.eventUpdate.asObservable();
-  }
 }
