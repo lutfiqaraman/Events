@@ -15,6 +15,7 @@ export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
+  event: IEvent;
 
   constructor(
     public eventsrv: EventService,
@@ -50,7 +51,7 @@ export class EventComponent implements OnInit {
     });
   }
 
-  editEventModal(): void {
+  updateEventModal(): void {
     const modalRef = this.modalService.open(EventModalComponent);
   }
 
@@ -75,8 +76,8 @@ export class EventComponent implements OnInit {
 
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
-    this.eventsrv.editEvent(eventId).subscribe((result) => {
-      this.editEventModal();
+    this.eventsrv.updateEvent(eventId, this.event).subscribe((result) => {
+      this.updateEventModal();
     });
   }
 
