@@ -76,7 +76,6 @@ export class EventComponent implements OnInit {
 
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
-    this.eventsrv.updateEvent(eventId, this.event);
   }
 
 }
