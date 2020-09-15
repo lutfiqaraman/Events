@@ -8,10 +8,12 @@ import { Observable, Subject } from 'rxjs';
 })
 export class EventService {
   private url: string;
-  private eventUpdate = new Subject<IEvent>();
+  private eventsList: IEvent[] = [];
+  private eventUpdate = new Subject<IEvent[]>();
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient
+  ) { }
 
   // Events - get all Events
   getEvents(): Observable<IEvent[]>
@@ -29,10 +31,19 @@ export class EventService {
     return this.eventUpdate.asObservable();
   }
 
-  updateEvent(eventID: any, event: IEvent): Observable<IEvent[]>
+  updateEvent(eventID: any, event: IEvent)
   {
     this.url = 'http://localhost:3000/events/' + eventID;
-    return this.http.get<IEvent[]>(this.url);
+
+    this.http.put(this.url, event).subscribe((response) => {
+      const updateEvent = [...this.eventsList];
+      const oldPostIndex = updateEvent.findIndex(p => p.id === event.id);
+
+      updateEvent[oldPostIndex] = event;
+
+      this.eventsList = updateEvent;
+      this.eventUpdate.next([...this.eventsList]);
+    });
   }
 
   deleteEvent(eventID: any): void
