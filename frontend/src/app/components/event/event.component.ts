@@ -14,6 +14,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
+  @ViewChild('editProfileModal') editmodal: any;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
   event: IEvent;
@@ -28,7 +29,7 @@ export class EventComponent implements OnInit {
   ngOnInit(): void {
     this.fetchEvents();
     this.editProfileForm = this.fb.group({
-      eventtitle: [''],
+      titleevent: '',
       lastname: [''],
       username: [''],
       email: ['']
@@ -86,17 +87,17 @@ export class EventComponent implements OnInit {
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
     this.eventsrv.getAnEvent(eventId).subscribe((result) => {
-      this.openModal(EventModalComponent, result);
+      this.openModal(this.editmodal, result);
     });
   }
 
   openModal(targetModal: any, event: any) {
-
+    console.log(event);
     this.modalService.open(targetModal, {
      centered: true,
      backdrop: 'static'
     });
-    console.log(event.title);
+
     this.editProfileForm.patchValue({
      titleevent: event.title,
      lastname: 'user.lastname',
