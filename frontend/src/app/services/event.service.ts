@@ -22,6 +22,7 @@ export class EventService {
     return this.http.get<IEvent[]>(this.url);
   }
 
+  // Events - get a single event based on id
   getAnEvent(id: any): Observable<IEvent[]>
   {
     this.url = 'http://localhost:3000/events/' + id;
