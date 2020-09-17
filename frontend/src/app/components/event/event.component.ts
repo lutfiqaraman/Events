@@ -5,6 +5,7 @@ import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -16,14 +17,22 @@ export class EventComponent implements OnInit {
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
   event: IEvent;
+  editProfileForm: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     public eventsrv: EventService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
     this.fetchEvents();
+    this.editProfileForm = this.fb.group({
+      eventtitle: [''],
+      lastname: [''],
+      username: [''],
+      email: ['']
+     });
   }
 
   showCalendar() {
@@ -76,6 +85,24 @@ export class EventComponent implements OnInit {
 
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
+    this.eventsrv.getAnEvent(eventId).subscribe((result) => {
+      this.openModal(EventModalComponent, result);
+    });
   }
+
+  openModal(targetModal: any, event: any) {
+
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static'
+    });
+    console.log(event.title);
+    this.editProfileForm.patchValue({
+     titleevent: event.title,
+     lastname: 'user.lastname',
+     username: 'user.username',
+     email: 'user.email'
+    });
+   }
 
 }

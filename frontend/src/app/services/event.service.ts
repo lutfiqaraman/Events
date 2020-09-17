@@ -22,6 +22,12 @@ export class EventService {
     return this.http.get<IEvent[]>(this.url);
   }
 
+  getAnEvent(id: any): Observable<IEvent[]>
+  {
+    this.url = 'http://localhost:3000/events/' + id;
+    return this.http.get<IEvent[]>(this.url);
+  }
+
   addEvent(event: any) {
     this.url = 'http://localhost:3000/events';
     this.http.post(this.url, event).subscribe();
