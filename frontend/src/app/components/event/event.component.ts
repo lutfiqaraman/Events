@@ -87,12 +87,12 @@ export class EventComponent implements OnInit {
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
     this.eventsrv.getAnEvent(eventId).subscribe((result) => {
-      this.openModal(this.editmodal, result);
+      this.openEditModal(this.editmodal, result);
     });
   }
 
-  openModal(targetModal: any, event: any) {
-    console.log(event);
+  openEditModal(targetModal: any, event: any) {
+
     this.modalService.open(targetModal, {
      centered: true,
      backdrop: 'static'
@@ -104,6 +104,6 @@ export class EventComponent implements OnInit {
      username: 'user.username',
      email: 'user.email'
     });
-   }
+  }
 
 }
