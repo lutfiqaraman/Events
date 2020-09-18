@@ -14,11 +14,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
-  @ViewChild('editProfileModal') editmodal: any;
+  @ViewChild('editEventModal') editmodal: any;
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
   event: IEvent;
-  editProfileForm: FormGroup;
+  editEventForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -28,11 +28,10 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchEvents();
-    this.editProfileForm = this.fb.group({
-      titleevent: '',
-      lastname: [''],
-      username: [''],
-      email: ['']
+    this.editEventForm = this.fb.group({
+      title: '',
+      start: '',
+      end: ''
      });
   }
 
@@ -98,11 +97,10 @@ export class EventComponent implements OnInit {
      backdrop: 'static'
     });
 
-    this.editProfileForm.patchValue({
-     titleevent: event.title,
-     lastname: 'user.lastname',
-     username: 'user.username',
-     email: 'user.email'
+    this.editEventForm.patchValue({
+     title: event.title,
+     start: event.start,
+     end: event.end
     });
   }
 
