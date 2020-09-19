@@ -15,6 +15,7 @@
   <div class="modal-body">
    <form [formGroup]="editEventForm">
     <div class="form-group row">
+      
      <label for="title" class="col-sm-4 col-form-label">Title</label>
      <div class="col-sm-8">
       <input type="text" class="form-control" formControlName="title" id="title">
@@ -23,6 +24,7 @@
     <div class="form-group row">
      <label for="lastname" class="col-sm-4 col-form-label">Start</label>
      <div class="col-sm-8">
+       <!--Date time picker must be used here -->
       <input type="text" class="form-control" formControlName="start" id="start">
      </div>
     </div>   
