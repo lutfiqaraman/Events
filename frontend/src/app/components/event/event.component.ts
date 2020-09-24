@@ -14,25 +14,19 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class EventComponent implements OnInit {
   @ViewChild('calendar') calendar: FullCalendarComponent;
-  @ViewChild('editEventModal') editmodal: any;
+
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
   event: IEvent;
   editEventForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
     public eventsrv: EventService,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
     this.fetchEvents();
-    this.editEventForm = this.fb.group({
-      title: '',
-      start: '',
-      end: ''
-     });
   }
 
   showCalendar() {
@@ -49,7 +43,12 @@ export class EventComponent implements OnInit {
   }
 
   openEventModal(): void {
-    const modalRef = this.modalService.open(EventModalComponent);
+
+    const modalRef = this.modalService.open(EventModalComponent, {
+      centered: true,
+      backdrop: 'static'
+    });
+
     modalRef.result
     .then(() => {
       const calendarAPI = this.calendar.getApi();
@@ -58,10 +57,6 @@ export class EventComponent implements OnInit {
     .catch(() => {
       console.log('Error: add event form');
     });
-  }
-
-  updateEventModal(): void {
-    const modalRef = this.modalService.open(EventModalComponent);
   }
 
   eventsContent(fetchInfo: any, successCallback: any, failureCallback: any) {
@@ -86,21 +81,7 @@ export class EventComponent implements OnInit {
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
     this.eventsrv.getAnEvent(eventId).subscribe((result) => {
-      this.openEditModal(this.editmodal, result);
-    });
-  }
-
-  openEditModal(targetModal: any, event: any) {
-
-    this.modalService.open(targetModal, {
-     centered: true,
-     backdrop: 'static'
-    });
-
-    this.editEventForm.patchValue({
-     title: event.title,
-     start: event.start,
-     end: event.end
+      // this.openEditModal(this.eventmodal, result);
     });
   }
 

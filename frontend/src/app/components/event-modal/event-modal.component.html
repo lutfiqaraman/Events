@@ -1,49 +1,50 @@
-<div class="modal-header">
-  <h4 class="modal-title">Add Event</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
 
-<form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
-  <div class="modal-body">
-    <div class="container">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Event</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
-      <!-- Event Title -->
-      <div class="form-group">
-        <label for="dateOfBirth">Title</label>
-        <div class="input-group">
-          <input id="eventtitle" class="form-control" placeholder="type your title" name="eventtitle" formControlName="eventtitle">
-        </div>
-      </div>
-
-      <!-- Event Start Date - Start -->
-      <div class="form-group">
-        <label for="eventstartdate">Start Date</label>
-        <div class="input-group">
-          <input id="eventstartdate" class="form-control" placeholder="yyyy-mm-dd" name="dpeventstartdate" ngbDatepicker #dpstartdate="ngbDatepicker" formControlName="eventstart">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary fa fa-calendar" (click)="dpstartdate.toggle()" type="button"></button>
+  <form [formGroup]="eventForm" (ngSubmit)="submitEvent()">
+    <div class="modal-body">
+      <div class="container">
+  
+        <!-- Event Title -->
+        <div class="form-group">
+          <label for="dateOfBirth">Title</label>
+          <div class="input-group">
+            <input id="eventtitle" class="form-control" placeholder="type your title" name="eventtitle" formControlName="eventtitle">
           </div>
         </div>
-      </div>
-      <!-- Event Start Date - End -->
-
-      <!-- Event End Date - Start -->
-      <div class="form-group">
-        <label for="eventenddate">End Date</label>
-        <div class="input-group">
-          <input id="eventenddate" class="form-control" placeholder="yyyy-mm-dd" name="dpeventenddate" ngbDatepicker #dpenddate="ngbDatepicker" formControlName="eventend">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary fa fa-calendar" (click)="dpenddate.toggle()" type="button"></button>
+  
+        <!-- Event Start Date - Start -->
+        <div class="form-group">
+          <label for="eventstartdate">Start Date</label>
+          <div class="input-group">
+            <input id="eventstartdate" class="form-control" placeholder="yyyy-mm-dd" name="dpeventstartdate" ngbDatepicker #dpstartdate="ngbDatepicker" formControlName="eventstart">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary fa fa-calendar" (click)="dpstartdate.toggle()" type="button"></button>
+            </div>
           </div>
         </div>
+        <!-- Event Start Date - End -->
+  
+        <!-- Event End Date - Start -->
+        <div class="form-group">
+          <label for="eventenddate">End Date</label>
+          <div class="input-group">
+            <input id="eventenddate" class="form-control" placeholder="yyyy-mm-dd" name="dpeventenddate" ngbDatepicker #dpenddate="ngbDatepicker" formControlName="eventend">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary fa fa-calendar" (click)="dpenddate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <!-- Event End Date - End -->
+        
       </div>
-      <!-- Event End Date - End -->
-      
     </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-success" [disabled]="!eventForm.valid">Save</button>
-  </div>
-</form>
+    <div class="modal-footer">
+      <button class="btn btn-success">Save</button>
+    </div>
+  </form>
