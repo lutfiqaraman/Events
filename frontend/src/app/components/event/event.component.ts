@@ -5,6 +5,7 @@ import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -78,7 +79,11 @@ export class EventComponent implements OnInit {
   displayEvent(info: any) {
     const eventId = info.event.extendedProps._id;
     this.eventsrv.getAnEvent(eventId).subscribe((result) => {
-      // this.openEditModal(this.eventmodal, result);
+      const modalRef = this.modalService.open(EventModalComponent, {
+        centered: true
+      });
+
+      modalRef.componentInstance.event = result;
     });
   }
 

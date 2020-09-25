@@ -10,12 +10,12 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./event-modal.component.css']
 })
 export class EventModalComponent implements OnInit {
-  eventForm: FormGroup;
+  public eventForm: FormGroup;
 
   constructor(
     public eventsrv: EventService,
     public activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder)
+    public formBuilder: FormBuilder)
     { }
 
   ngOnInit(): void {
@@ -32,14 +32,10 @@ export class EventModalComponent implements OnInit {
 
   submitEvent() {
 
-    const eventTitle = this.eventForm.get('eventtitle').value;
-    const eventStartDate = this.eventForm.get('eventstart').value;
-    const eventEndDate = this.eventForm.get('eventend').value;
-
     const eventObj = {
-      title: eventTitle,
-      start: eventStartDate,
-      end: eventEndDate
+      title: this.eventForm.get('eventtitle').value,
+      start: this.eventForm.get('eventstart').value,
+      end: this.eventForm.get('eventend').value
     };
 
     this.eventsrv.addEvent(eventObj);
