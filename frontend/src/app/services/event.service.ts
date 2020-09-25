@@ -44,9 +44,9 @@ export class EventService {
 
     this.http.put(this.url, event).subscribe((response) => {
       const updateEvent = [...this.eventsList];
-      const oldPostIndex = updateEvent.findIndex(p => p.id === event.id);
+      const oldEventIndex = updateEvent.findIndex(e => e.id === event.id);
 
-      updateEvent[oldPostIndex] = event;
+      updateEvent[oldEventIndex] = event;
 
       this.eventsList = updateEvent;
       this.eventUpdate.next([...this.eventsList]);

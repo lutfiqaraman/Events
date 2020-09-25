@@ -16,9 +16,7 @@ export class EventModalComponent implements OnInit {
     public eventsrv: EventService,
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder)
-    {
-
-    }
+    { }
 
   ngOnInit(): void {
     this.createAddEventForm();

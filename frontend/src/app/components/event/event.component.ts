@@ -5,7 +5,6 @@ import { IEvent } from 'src/app/models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventModalComponent } from '../event-modal/event-modal.component';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -17,8 +16,6 @@ export class EventComponent implements OnInit {
 
   calendarOptions: CalendarOptions;
   events: IEvent[] = [];
-  event: IEvent;
-  editEventForm: FormGroup;
 
   constructor(
     public eventsrv: EventService,
@@ -46,7 +43,7 @@ export class EventComponent implements OnInit {
 
     const modalRef = this.modalService.open(EventModalComponent, {
       centered: true,
-      backdrop: 'static'
+      ariaLabelledBy: 'modal-basic-title'
     });
 
     modalRef.result
