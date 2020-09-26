@@ -19,10 +19,10 @@ export class EventModalComponent implements OnInit {
     { }
 
   ngOnInit(): void {
-    this.createAddEventForm();
+    this.addEventForm();
   }
 
-  private createAddEventForm() {
+  private addEventForm() {
     this.eventForm = this.formBuilder.group({
       eventtitle: '',
       eventstart: '',
