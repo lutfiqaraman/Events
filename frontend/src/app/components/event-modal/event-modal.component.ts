@@ -18,9 +18,7 @@ export class EventModalComponent implements OnInit {
 
   openModal(event: any) {
     this.modalService
-    .open(event, { ariaLabelledBy: 'event-modal' }).result.then(() => {
-      console.log('done !');
-    });
+    .open(event, { ariaLabelledBy: 'event-modal' });
   }
 
 }
