@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -10,36 +10,16 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./event-modal.component.css']
 })
 export class EventModalComponent implements OnInit {
-  public eventForm: FormGroup;
 
-  constructor(
-    public eventsrv: EventService,
-    public activeModal: NgbActiveModal,
-    public formBuilder: FormBuilder)
-    { }
+  constructor(private modalService: NgbModal)  { }
 
   ngOnInit(): void {
-    this.addEventForm();
+
   }
 
-  private addEventForm() {
-    this.eventForm = this.formBuilder.group({
-      eventtitle: '',
-      eventstart: '',
-      eventend: ''
-    });
-  }
-
-  submitEvent() {
-
-    const eventObj = {
-      title: this.eventForm.get('eventtitle').value,
-      start: this.eventForm.get('eventstart').value,
-      end: this.eventForm.get('eventend').value
-    };
-
-    this.eventsrv.addEvent(eventObj);
-    this.activeModal.close();
+  openModal(event: any) {
+    this.modalService
+    .open(event, { ariaLabelledBy: 'event-modal' });
   }
 
 }

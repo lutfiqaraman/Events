@@ -17,70 +17,10 @@ export class EventComponent implements OnInit {
 
   events: IEvent[] = [];
 
-  constructor(
-    public eventsrv: EventService,
-    private modalService: NgbModal
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.fetchEvents();
-  }
 
-  showCalendar() {
-    this.calendarOptions = {
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-      },
-      initialView: 'dayGridMonth',
-      events: this.eventsContent.bind(this),
-      eventClick: this.displayEvent.bind(this)
-    };
-  }
-
-  openEventModal(): void {
-    const modalRef = this.modalService.open(EventModalComponent, {
-      centered: true,
-      ariaLabelledBy: 'modal-basic-title'
-    });
-
-    modalRef.result
-    .then(() => {
-      const calendarAPI = this.calendar.getApi();
-      calendarAPI.refetchEvents();
-    })
-    .catch(() => {
-      console.log('Error: add event form');
-    });
-  }
-
-  eventsContent(fetchInfo: any, successCallback: any, failureCallback: any) {
-    successCallback(this.events);
-
-    failureCallback(() => {
-      alert('Fail to show events content');
-    });
-
-    this.fetchEvents();
-  }
-
-  fetchEvents() {
-    this.eventsrv.getEvents().subscribe((data) => {
-      this.events = data;
-      this.showCalendar();
-    }, (err: HttpErrorResponse) => {
-      alert(`Cannot get events. Got ${err.message}`);
-    });
-  }
-
-  displayEvent(info: any) {
-    const eventId = info.event.extendedProps._id;
-    this.eventsrv.getAnEvent(eventId).subscribe((result) => {
-      const modalRef = this.modalService.open(EventModalComponent, {
-        centered: true
-      });
-    });
   }
 
 }
