@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
-import { NgbActiveModal, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { EventService } from 'src/app/services/event.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-event-modal',
@@ -11,7 +8,9 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class EventModalComponent implements OnInit {
 
-  constructor(private modalService: NgbModal)  { }
+  constructor(
+    private modalService: NgbModal
+  )  { }
 
   ngOnInit(): void {
 
@@ -19,7 +18,9 @@ export class EventModalComponent implements OnInit {
 
   openModal(event: any) {
     this.modalService
-    .open(event, { ariaLabelledBy: 'event-modal' });
+    .open(event, { ariaLabelledBy: 'event-modal' }).result.then(() => {
+      console.log('done !');
+    });
   }
 
 }
