@@ -9,7 +9,7 @@
   </div>
 
   <div class="modal-body">
-    <form>
+    <form id="ngEventForm" (ngSubmit)="saveData()">
       <!-- Event Title -->
       <div class="form-group">
         <label for="eventtitle">Title</label>
@@ -43,7 +43,7 @@
   </div>
   
   <div class="modal-footer">
-    <button class="btn btn-success">Save</button>
+    <button class="btn btn-success" form="ngEventForm">Save</button>
   </div>
 
 </ng-template>

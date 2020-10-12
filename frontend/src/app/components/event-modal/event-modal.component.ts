@@ -21,4 +21,9 @@ export class EventModalComponent implements OnInit {
     .open(event);
   }
 
+  saveData()
+  {
+    console.log('save data of the form...');
+  }
+
 }
