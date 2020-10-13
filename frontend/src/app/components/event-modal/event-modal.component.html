@@ -1,4 +1,4 @@
-<button class="btn btn-outline-primary add" (click)="openModal(event)">Add Event</button>
+<button class="btn btn-outline-primary add" (click)="openModal()">Add Event</button>
 
 <ng-template #event let-modal>
   <div class="modal-header">
@@ -9,12 +9,12 @@
   </div>
 
   <div class="modal-body">
-    <form id="ngEventForm" (ngSubmit)="saveData()">
+    <form [formGroup]="eventForm" id="ngEventForm" (ngSubmit)="submitEventFormData()">
       <!-- Event Title -->
       <div class="form-group">
         <label for="eventtitle">Title</label>
         <div class="input-group">
-          <input id="eventtitle" class="form-control" placeholder="type your title" name="eventtitle">
+          <input id="eventtitle" class="form-control" placeholder="type your title" name="eventtitle" formControlName="title">
         </div>
       </div>
 
@@ -22,7 +22,7 @@
       <div class="form-group">
         <label for="eventstartdate">Start Date</label>
         <div class="input-group">
-          <input id="eventstartdate" class="form-control" placeholder="yyyy-mm-dd" name="dpstartdate" ngbDatepicker #dpstartdate="ngbDatepicker">
+          <input id="eventstartdate" class="form-control" placeholder="yyyy-mm-dd" name="dpstartdate" ngbDatepicker #dpstartdate="ngbDatepicker" formControlName="startDate">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary fa fa-calendar" (click)="dpstartdate.toggle()" type="button"></button>
           </div>
@@ -33,7 +33,7 @@
       <div class="form-group">
         <label for="eventenddate">End Date</label>
         <div class="input-group">
-          <input id="eventenddate" class="form-control" placeholder="yyyy-mm-dd" name="dpenddate" ngbDatepicker #dpenddate="ngbDatepicker">
+          <input id="eventenddate" class="form-control" placeholder="yyyy-mm-dd" name="dpenddate" ngbDatepicker #dpenddate="ngbDatepicker" formControlName="endDate">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary fa fa-calendar" (click)="dpenddate.toggle()" type="button"></button>
           </div>

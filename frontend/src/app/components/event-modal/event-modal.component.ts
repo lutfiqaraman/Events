@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-event-modal',
@@ -7,23 +8,37 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./event-modal.component.css']
 })
 export class EventModalComponent implements OnInit {
+  eventForm: FormGroup;
 
   constructor(
-    private modalService: NgbModal
-  )  { }
+    private activeModal: NgbActiveModal,
+    private eventModal: NgbModal,
+    private formBuilder: FormBuilder
+  )  {
+    this.createEventForm();
+  }
 
   ngOnInit(): void {
 
   }
 
-  openModal(event: any) {
-    this.modalService
-    .open(event);
+  openModal() {
+
   }
 
-  saveData()
+  private createEventForm()
   {
-    console.log('save data of the form...');
+    this.eventForm = this.formBuilder.group({
+      title: '',
+      startDate: '',
+      endDate: ''
+    });
+  }
+
+  submitEventFormData()
+  {
+    console.log(this.eventForm.value);
+    this.activeModal.close();
   }
 
 }
