@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-event-modal',
@@ -12,7 +12,6 @@ export class EventModalComponent implements OnInit {
 
   constructor(
     private activeModal: NgbActiveModal,
-    private eventModal: NgbModal,
     private formBuilder: FormBuilder
   )  {
     this.createEventForm();
