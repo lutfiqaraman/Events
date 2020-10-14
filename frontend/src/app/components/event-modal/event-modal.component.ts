@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-event-modal',
@@ -11,7 +11,7 @@ export class EventModalComponent implements OnInit {
   eventForm: FormGroup;
 
   constructor(
-    private activeModal: NgbActiveModal,
+    private modalService: NgbModal,
     private formBuilder: FormBuilder
   )  {
     this.createEventForm();
@@ -21,8 +21,8 @@ export class EventModalComponent implements OnInit {
 
   }
 
-  openModal() {
-
+  openModal(event: any) {
+    const modalRef = this.modalService.open(event);
   }
 
   private createEventForm()
@@ -37,7 +37,6 @@ export class EventModalComponent implements OnInit {
   submitEventFormData()
   {
     console.log(this.eventForm.value);
-    this.activeModal.close();
   }
 
 }
