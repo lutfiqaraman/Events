@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-modal',
@@ -13,6 +14,7 @@ export class EventModalComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
+    private eventSrv: EventService,
     private formBuilder: FormBuilder
   )  {
     this.createEventForm();
@@ -38,6 +40,7 @@ export class EventModalComponent implements OnInit {
   submitEventFormData()
   {
     const data = this.eventForm.value;
+    this.eventSrv.addEvent(data);
     this.eventModel.close();
   }
 
