@@ -15,13 +15,27 @@
       </div>
 
       <div class="modal-body">
-        <p>here is the body</p>
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <input class="form-control" type="text" placeholder="name of event">
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" type="text">
+          </div>
+
+          <div class="mb-3">
+            <input class="form-control" type="text">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+
+        </form>
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
-      </div>
     </div>
   </div>
 </div>

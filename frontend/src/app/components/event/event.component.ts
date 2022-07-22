@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Modal } from 'bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -8,11 +9,16 @@ import { Modal } from 'bootstrap';
 })
 export class EventComponent implements OnInit {
   eventModal: Modal | undefined;
+  eventForm!: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-
+    this.eventForm = this.fb.group({
+      eventName     : ['', [Validators.required]],
+      eventDateFrom : ['', [Validators.required]],
+      eventDateTo   : ['', [Validators.required]]
+    });
   }
 
   open() {
@@ -20,6 +26,10 @@ export class EventComponent implements OnInit {
       keyboard: false
     });
     this.eventModal.show();
+  }
+
+  onSubmit() {
+    console.log('you click save !');
   }
 
 }
