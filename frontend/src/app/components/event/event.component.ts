@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EventComponent implements OnInit {
   eventModal: Modal | undefined;
   eventForm!: FormGroup;
+  submitted = false;
 
   constructor(private fb: FormBuilder) { }
 
@@ -28,8 +29,16 @@ export class EventComponent implements OnInit {
     this.eventModal.show();
   }
 
+  get formControls() {
+    return this.eventForm.controls;
+  }
+
   onSubmit() {
-    console.log('you click save !');
+    this.submitted = true;
+
+    if (this.eventForm.invalid) {
+      return;
+    }
   }
 
 }
