@@ -15,9 +15,9 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
-      eventName     : ['', [Validators.required]],
-      eventDateFrom : ['', [Validators.required]],
-      eventDateTo   : ['', [Validators.required]]
+      eventName      : ['', [Validators.required]],
+      eventStartDate : ['', [Validators.required]],
+      eventEndDate   : ['', [Validators.required]]
     });
   }
 

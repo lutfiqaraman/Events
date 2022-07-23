@@ -10,22 +10,27 @@
     <div class="modal-content">
 
       <div class="modal-header">
-        <h3 class="modal-title" id="eventModalLabel">Add a new event</h3>
+        <h3 class="modal-title text-uppercase" id="eventModalLabel">add a new event</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
+
         <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
           <div class="mb-3">
-            <input class="form-control" type="text" placeholder="name of event">
+            <label for="eventName" class="form-label">Event Name</label>
+            <input id="eventName" class="form-control" type="text" placeholder="name of event" formControlName="eventName">
           </div>
 
           <div class="mb-3">
-            <input id="startEventDate" class="form-control" type="date">
+            <label for="startEventDate" class="form-label">Event Start Date</label>
+            <input id="startEventDate" class="form-control" type="date" formControlName="eventStartDate">
           </div>
 
           <div class="mb-3">
-            <input id="endEventDate" class="form-control" type="date">
+            <label for="endEventDate" class="form-label">Event End Date</label>
+            <input id="endEventDate" class="form-control" type="date" formControlName="eventEndDate">
           </div>
 
           <div class="modal-footer">
