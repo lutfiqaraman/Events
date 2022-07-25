@@ -8,9 +8,7 @@ import { CalendarOptions } from '@fullcalendar/angular';
 })
 export class CalendarComponent implements OnInit {
 
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth'
-  };
+  calendarOptions: CalendarOptions = {};
 
   constructor() {}
 
@@ -19,6 +17,7 @@ export class CalendarComponent implements OnInit {
   }
 
   showFullCalendarPlugin() {
+    this.calendarOptions.initialView = 'dayGridMonth';
     return this.calendarOptions;
   }
 
