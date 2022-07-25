@@ -20,22 +20,40 @@
 
           <div class="mb-3">
             <label for="eventName" class="form-label">Event Name</label>
-            <input id="eventName" class="form-control" type="text" placeholder="name of event" formControlName="eventName">
+            <input id="eventName" class="form-control" type="text" placeholder="name of event" formControlName="eventName" [ngClass]="{'is-invalid': isSubmitted && formControls['eventName'].errors}">
+
+            <span *ngIf="isSubmitted && formControls['eventName'].hasError('required')" class="text-danger">
+              event name is required
+            </span>
+
+            <span *ngIf="isSubmitted && formControls['eventName'].hasError('minlength')" class="text-danger">
+              event name must be at least 3 characters
+            </span>
           </div>
 
           <div class="mb-3">
             <label for="startEventDate" class="form-label">Event Start Date</label>
-            <input id="startEventDate" class="form-control" type="date" formControlName="eventStartDate">
+            <input id="startEventDate" class="form-control" type="date" formControlName="eventStartDate" [ngClass]="{'is-invalid': isSubmitted && formControls['eventStartDate'].errors}">
+
+            <span *ngIf="isSubmitted && formControls['eventStartDate'].hasError('required')" class="text-danger">
+              The start date of the event is required
+            </span>
+
           </div>
 
           <div class="mb-3">
             <label for="endEventDate" class="form-label">Event End Date</label>
-            <input id="endEventDate" class="form-control" type="date" formControlName="eventEndDate">
+            <input id="endEventDate" class="form-control" type="date" formControlName="eventEndDate" [ngClass]="{'is-invalid': isSubmitted && formControls['eventEndDate'].errors}">
+
+            <span *ngIf="isSubmitted && formControls['eventEndDate'].hasError('required')" class="text-danger">
+              The end date of the event is required
+            </span>
+
           </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save Event</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </div>
 
         </form>

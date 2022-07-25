@@ -10,13 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EventComponent implements OnInit {
   eventModal: Modal | undefined;
   eventForm!: FormGroup;
-  submitted = false;
+  isSubmitted = false;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
-      eventName      : ['', [Validators.required]],
+      eventName      : ['', [Validators.required, Validators.minLength(3)]],
       eventStartDate : ['', [Validators.required]],
       eventEndDate   : ['', [Validators.required]]
     });
@@ -34,7 +34,7 @@ export class EventComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    this.isSubmitted = true;
 
     if (this.eventForm.invalid) {
       return;
