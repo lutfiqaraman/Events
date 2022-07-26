@@ -5,7 +5,8 @@ const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 const database = process.env.DB_NAME;
 
-const url = `mongodb+srv://${username}:${password}@cluster0-eqore.mongodb.net/`
+//MongoDB - Localhost
+const localURL = 'mongodb://127.0.0.1:27017';
 
 const options = {
   dbName: database,
@@ -15,9 +16,9 @@ const options = {
 
 exports.connection = () => {
   mongoose
-  .connect(url, options)
+  .connect(localURL, options)
   .then(() => {
-    console.log('connect to mongo cloud');
+    console.log('connect to mongo database');
   })
   .catch((err) => {
     console.log(err);
