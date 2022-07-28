@@ -16,7 +16,7 @@ exports.connection = () => {
   mongoose
   .connect(localURL, options)
   .then(() => {
-    console.log('connect to mongo database');
+    console.log('connect to local mongo database');
   })
   .catch((err) => {
     console.log(err);
