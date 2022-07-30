@@ -1,6 +1,6 @@
 const Event = require('../models/event.model');
 
-// Get an event by Id
+// Get an event by event ID
 exports.getEventById = async (req, res) => {
   const eventID = req.params.id;
 
@@ -28,9 +28,7 @@ exports.getAllEvents = async (req, res) => {
 // Create an Event
 exports.createEvent = async (req, res) => {
   const event = new Event({
-    title: req.body.title,
-    description: req.body.description,
-    className: req.body.className,
+    name: req.body.name,
     start: req.body.start,
     end: req.body.end
   });
@@ -51,9 +49,7 @@ exports.updateEvent = (req, res) => {
 
   const event = {
     _id: eventID,
-    title: req.body.title,
-    description: req.body.description,
-    className: req.body.className,
+    name: req.body.name,
     start: req.body.start,
     end: req.body.end
   };
