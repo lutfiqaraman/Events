@@ -3,8 +3,8 @@ require('dotenv').config({ path: "../.env" });
 
 const database = process.env.DB_NAME;
 
-//MongoDB - Localhost
-const localURL = 'mongodb://127.0.0.1:27017';
+//MongoDB - Localhost :: EventsDB
+const localURL = 'mongodb://127.0.0.1:27017/eventsdb';
 
 const options = {
   dbName: database,
