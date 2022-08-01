@@ -20,9 +20,14 @@ exports.getEventById = async (req, res) => {
 
 // Get all events
 exports.getAllEvents = async (req, res) => {
-  await Event.find().then((data) => {
-    res.status(200).json(data);
-  });
+  await Event
+      .find({})
+      .then((data) => {
+          res.status(200).json(data);
+      })
+      .catch((err) => {
+          res.json(err);
+      });
 };
 
 // Create an Event
