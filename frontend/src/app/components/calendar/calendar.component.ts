@@ -14,11 +14,16 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.showFullCalendarPlugin();
+    this.getAllEvents();
   }
 
   showFullCalendarPlugin() {
     this.calendar.initialView = 'dayGridMonth';
     return this.calendar;
+  }
+
+  getAllEvents() {
+
   }
 
 }
