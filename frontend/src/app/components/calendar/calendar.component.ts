@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
+import {EventService} from '../../services/event.service';
 
 @Component({
   selector: 'app-calendar',
@@ -9,8 +10,9 @@ import { CalendarOptions } from '@fullcalendar/angular';
 export class CalendarComponent implements OnInit {
 
   calendar: CalendarOptions = {};
+  eventsList = [];
 
-  constructor() {}
+  constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
     this.showFullCalendarPlugin();
@@ -23,7 +25,11 @@ export class CalendarComponent implements OnInit {
   }
 
   getAllEvents() {
+    this.eventService.getEvents().subscribe(result =>
+      this.eventsList.push(result)
+    );
 
+    console.log(this.eventsList);
   }
 
 }
