@@ -28,8 +28,6 @@ export class CalendarComponent implements OnInit {
     this.eventService.getEvents().subscribe(result =>
       this.eventsList.push(result)
     );
-
-    console.log(this.eventsList);
   }
 
 }
